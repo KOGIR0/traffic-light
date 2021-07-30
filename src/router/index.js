@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Red from '@/components/Red'
 import Green from '@/components/Green'
 import Yellow from '@/components/Yellow'
+import TrafficLight from '@/components/TrafficLight'
 
 Vue.use(Router)
 

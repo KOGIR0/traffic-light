@@ -1,20 +1,19 @@
 <template>
     <div id="traffic-light">
-        <div class="border">
-            <div id="red" :class="[active == 'red' ? 'active' : 'unactive']"></div>
-        </div>
-        <div class="border">
-            <div id="yellow" :class="[active == 'yellow' ? 'active' : 'unactive']"></div>
-        </div>
-        <div class="border">
-            <div id="green" :class="[active == 'green' ? 'active' : 'unactive']"></div>
-        </div>
+        <circle-light :circleColor="'red'" :isActive="active === 'red'" :message="timeLeft"/>
+        <circle-light :circleColor="'yellow'" :isActive="active === 'yellow'" :message="timeLeft"/>
+        <circle-light :circleColor="this.$store.state.green" :isActive="active === this.$store.state.green" :message="timeLeft"/>
     </div>
 </template>
 
 <script>
+import CircleLight from './CircleLight.vue'
+
 export default {
-    props: ['active']
+    props: ['active', 'timeLeft'],
+    components: {
+        'circle-light': CircleLight
+    }
 }
 </script>
 
@@ -28,62 +27,5 @@ export default {
     width: 65px;
     margin: 0 auto 0 auto;
     border: 1px solid black;
-}
-
-#red
-{
-    background-color: red;
-}
-
-#yellow
-{
-    background-color: yellow;
-}
-
-#green
-{
-    background-color: green;
-}
-
-#red, #yellow, #green
-{
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-}
-
-.border
-{
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border: 2px solid black;
-    border-top: 5px solid black;
-    margin: 5px;
-}
-
-.unactive
-{
-    opacity: 0.5;
-}
-
-.active
-{
-    opacity: 1;
-}
-
-#red.active
-{
-    box-shadow: 0 0 55px 10px red;
-}
-
-#yellow.active
-{
-    box-shadow: 0 0 55px 10px yellow;
-}
-
-#green.active
-{
-    box-shadow: 0 0 55px 10px green;
 }
 </style>

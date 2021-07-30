@@ -13,14 +13,30 @@ export default {
           direction: 'down'
       }
   },
+  methods:
+  {
+      updateDirection()
+      {
+        if(this.$route.path === '/green')
+        {
+            console.log("up");
+            this.direction = 'up';
+        } else if(this.$route.path === '/red') {
+            this.direction = 'down';
+        }
+      }
+  },
+  mounted()
+  {
+      this.updateDirection();
+  },
   updated()
   {
-      if(this.$route.path === '/green')
-      {
-          this.direction = 'up';
-      } else if(this.$route.path == '/red') {
-          this.direction = 'down';
-      }
+      this.updateDirection();
+  },
+  beforeUpdate()
+  {
+      console.log("update");
   }
 }
 </script>

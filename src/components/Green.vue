@@ -1,7 +1,6 @@
 <template>
     <div>
-        <traffic-light :active="'green'"/>
-        <div>{{this.timer.timeLeft}}</div>
+        <traffic-light :active="this.$store.state.green" :timeLeft="this.timer.timeLeft"/>
     </div>
 </template>
 
@@ -15,16 +14,14 @@ export default {
             timer: new Timer(15)
         };
     },
-    props: ['direction'],
     components:
     {
         'traffic-light': TrafficLight
     },
-    mounted()
+    updated()
     {
-        setTimeout(() => {
-            this.$router.push('/yellow')
-        }, 15000);
+        if(this.timer.timeLeft <= 0)
+            this.$router.push('/yellow');
     }
 }
 </script>
