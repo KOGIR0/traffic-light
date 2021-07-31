@@ -11,17 +11,25 @@ import Timer from './Timer'
 export default {
     data: function(){
         return {
-            timer: new Timer(10)
+            timer: ""
         }
     },
     components:
     {
         'traffic-light': TrafficLight
     },
+    beforeMount()
+    {
+        this.timer = new Timer(this.$store.state.timeLeft, () => {
+            this.$router.push('/yellow');
+        });
+    },
     updated()
     {
-        if(this.timer.timeLeft <= 0)
-            this.$router.push('/yellow');
+        if(this.timer.timeLeft > 0)
+        {
+            this.$store.commit('setTimeLeft', this.timer.timeLeft);
+        }
     }
 }
 </script>

@@ -1,7 +1,8 @@
 <template>
     <div class="border">
         <div class="light" 
-            :class="{ active: isActive, unactive: !isActive, blink: +message <= 3 && isActive }"
+            :class="{ active: isActive, unactive: !isActive,
+                    blink: +message <= this.blinkStartTime && isActive }"
             :style="[isActive ?
                     { backgroundColor: circleColor, boxShadow: `0 0 55px 10px ${circleColor}` } :
                     { backgroundColor: circleColor }]"
@@ -10,7 +11,6 @@
         </div>
     </div>
 </template>
-
 
 <script>
 export default {
@@ -22,7 +22,7 @@ export default {
     data: function()
     {
         return {
-            timer: 0
+            blinkStartTime: 3
         };
     }
 }
@@ -35,7 +35,7 @@ export default {
     height: 50px;
     border-radius: 100%;
     border: 2px solid black;
-    border-top: 5px solid black;
+    border-top: 7px solid black;
     margin: 5px;
 }
 

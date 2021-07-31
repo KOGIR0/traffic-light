@@ -1,43 +1,12 @@
 <template>
   <div id="app">
-    <router-view :direction="this.direction"/>
+    <router-view :direction="this.$store.state.direction"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  data: function()
-  {
-      return {
-          direction: 'down'
-      }
-  },
-  methods:
-  {
-      updateDirection()
-      {
-        if(this.$route.path === '/green')
-        {
-            console.log("up");
-            this.direction = 'up';
-        } else if(this.$route.path === '/red') {
-            this.direction = 'down';
-        }
-      }
-  },
-  mounted()
-  {
-      this.updateDirection();
-  },
-  updated()
-  {
-      this.updateDirection();
-  },
-  beforeUpdate()
-  {
-      console.log("update");
-  }
+  name: 'App'
 }
 </script>
 

@@ -1,8 +1,14 @@
 <template>
     <div id="traffic-light">
-        <circle-light :circleColor="'red'" :isActive="active === 'red'" :message="timeLeft"/>
-        <circle-light :circleColor="'yellow'" :isActive="active === 'yellow'" :message="timeLeft"/>
-        <circle-light :circleColor="this.$store.state.green" :isActive="active === this.$store.state.green" :message="timeLeft"/>
+        <circle-light :circleColor="'red'"
+                    :isActive="active === 'red'"
+                    :message="timeLeft"/>
+        <circle-light :circleColor="'yellow'"
+                    :isActive="active === 'yellow'"
+                    :message="timeLeft"/>
+        <circle-light :circleColor="this.$store.state.green"
+                    :isActive="active === this.$store.state.green"
+                    :message="timeLeft"/>
     </div>
 </template>
 

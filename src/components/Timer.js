@@ -1,15 +1,26 @@
 export default class Timer
 {
     // timeLeft - time in seconds
-    constructor(timeLeft)
+    // endCallback - function to call on Timer end
+    constructor(timeLeft, endCallback)
     {
         this.startTime = Date.now();
         this.timeLeft = timeLeft;
 
-        this.timerId = setInterval(() => this.timeLeft--, 1000);
+        this.timerId = setInterval(() => {
+            this.timeLeft--;
+            if(this.timeLeft <= 0)
+            {
+                if(endCallback && typeof endCallback === 'function')
+                {
+                    endCallback();
+                }
+                this.stopCountdown();
+            }
+        }, 1000);
     }
 
-    stopTimer()
+    stopCountdown()
     {
         clearInterval(this.timerId);
     }
