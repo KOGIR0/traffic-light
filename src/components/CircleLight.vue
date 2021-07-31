@@ -1,8 +1,8 @@
 <template>
     <div class="border">
-        <div class="light" 
+        <div class="light"
             :class="{ active: isActive, unactive: !isActive,
-                    blink: +message <= this.blinkStartTime && isActive }"
+                    blink: isBlink && isActive }"
             :style="[isActive ?
                     { backgroundColor: circleColor, boxShadow: `0 0 55px 10px ${circleColor}` } :
                     { backgroundColor: circleColor }]"
@@ -17,7 +17,8 @@ export default {
     props: [
         'message',
         'circleColor',
-        'isActive'
+        'isActive',
+        'isBlink'
     ],
     data: function()
     {

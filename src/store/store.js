@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         green: greenColor,
         timeLeft: 15,
-        direction: down
+        direction: down,
+        previousRoute: '/'
     },
     mutations: {
         setTimeLeft(state, payload)
@@ -19,9 +20,11 @@ export default new Vuex.Store({
         setDirection(state, payload)
         {
             state.direction = payload;
+        },
+        setPreviousRoute(state, payload)
+        {
+            state.previousRoute = payload;
         }
     },
-    plugins: [
-        createPersistedState()
-    ]
+    plugins: [createPersistedState()]
 })

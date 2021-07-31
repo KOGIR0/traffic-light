@@ -18,10 +18,11 @@ export default new Router({
                 // red is on the top, so start moving down
                 store.commit('setDirection', down);
                 // if we changed from one color to another, reset timer
-                if(from.path !== '/')
+                if(store.state.previousRoute !== to.path)
                 {
                     store.commit('setTimeLeft', redColorTime);
                 }
+                store.commit('setPreviousRoute', to.path);
                 next();
             }
         },
@@ -29,10 +30,11 @@ export default new Router({
             path: '/yellow',
             component: Yellow,
             beforeEnter: (to, from, next) => {
-                if(from.path !== '/')
+                if(store.state.previousRoute !== to.path)
                 {
                     store.commit('setTimeLeft', yellowColorTime);
                 }
+                store.commit('setPreviousRoute', to.path);
                 next();
             }
         },
@@ -42,10 +44,11 @@ export default new Router({
             beforeEnter: (to, from, next) => {
                 // green is at the bottom, so change direction
                 store.commit('setDirection', up);
-                if(from.path !== '/')
+                if(store.state.previousRoute !== to.path)
                 {
                     store.commit('setTimeLeft', greenColorTime);
                 }
+                store.commit('setPreviousRoute', to.path);
                 next();
             }
         },

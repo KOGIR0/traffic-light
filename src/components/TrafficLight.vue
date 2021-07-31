@@ -2,12 +2,15 @@
     <div id="traffic-light">
         <circle-light :circleColor="'red'"
                     :isActive="active === 'red'"
+                    :isBlink="timeLeft <= 3"
                     :message="timeLeft"/>
         <circle-light :circleColor="'yellow'"
                     :isActive="active === 'yellow'"
+                    :isBlink="timeLeft <= 3"
                     :message="timeLeft"/>
         <circle-light :circleColor="this.$store.state.green"
                     :isActive="active === this.$store.state.green"
+                    :isBlink="timeLeft <= 3"
                     :message="timeLeft"/>
     </div>
 </template>
