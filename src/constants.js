@@ -1,6 +1,9 @@
 export const redColorTime = 10;
 export const yellowColorTime = 3;
 export const greenColorTime = 15;
+export const blinkStartTime = 3;
 export const up = 'up';
 export const down = 'down';
-export const greenColor = 'rgb(39, 232, 51)'
+export const greenColor = "#2dc937"; //'rgb(39, 232, 51)';
+export const redColor = '#ec0000';
+export const yellowColor = '#eeff00';

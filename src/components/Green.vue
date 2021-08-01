@@ -1,6 +1,6 @@
 <template>
     <div>
-        <traffic-light :active="this.activeColor" :timeLeft="this.timer.timeLeft"/>
+        <traffic-light :active="activeColor" :timeLeft="timer.timeLeft"/>
     </div>
 </template>
 

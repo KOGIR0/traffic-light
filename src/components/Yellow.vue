@@ -1,19 +1,19 @@
 <template>
     <div>
-        <traffic-light :active="activeColor" :timeLeft="this.timer.timeLeft"/>
+        <traffic-light :active="activeColor" :timeLeft="timer.timeLeft"/>
     </div>
 </template>
 
 <script>
 import TrafficLight from './TrafficLight.vue'
 import Timer from './Timer'
-import { up, down } from '../constants'
+import { up, down, yellowColor } from '../constants'
 
 export default {
     data: function(){
         return {
             timer: "",
-            activeColor: 'yellow'
+            activeColor: yellowColor
         };
     },
     props: ['direction'],

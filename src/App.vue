@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view :direction="this.$store.state.direction"/>
+    <router-view :direction="$store.state.direction"/>
   </div>
 </template>
 

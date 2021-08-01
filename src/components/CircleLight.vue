@@ -19,13 +19,7 @@ export default {
         'circleColor',
         'isActive',
         'isBlink'
-    ],
-    data: function()
-    {
-        return {
-            blinkStartTime: 3
-        };
-    }
+    ]
 }
 </script>
 
