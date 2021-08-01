@@ -2,6 +2,8 @@
 
 > Traffic light spa
 
+![](https://github.com/KOGIR0/traffic-light/blob/main/images/tl.png)
+
 ## Build Setup
 
 ``` bash
