@@ -1,4 +1,4 @@
-
+// Common data and update function for Yellow, Green and Red components
 export const updateMixin = {
     data: function(){
         return {
@@ -6,11 +6,8 @@ export const updateMixin = {
             activeColor: ''
         };
     },
-    updated()
+    beforeDestroy()
     {
-        if(this.timer.timeLeft > 0)
-        {
-            this.$store.commit('setTimeLeft', this.timer.timeLeft);
-        }
-    }
+        this.$store.commit('setTimeLeft', this.timer.timeLeft);
+    },
 }
