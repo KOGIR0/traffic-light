@@ -8,30 +8,21 @@
 import TrafficLight from './TrafficLight.vue'
 import Timer from './Timer'
 import { redColor } from '../constants'
+import { updateMixin } from './updateMixin'
 
 export default {
-    data: function(){
-        return {
-            timer: "",
-            activeColor: redColor
-        }
-    },
+    mixins: [updateMixin],
     components:
     {
         'traffic-light': TrafficLight
     },
     beforeMount()
     {
+        console.log("Before mount " + this.$store.state.timeLeft);
+        this.activeColor = redColor;
         this.timer = new Timer(this.$store.state.timeLeft, () => {
             this.$router.push('/yellow');
         });
-    },
-    updated()
-    {
-        if(this.timer.timeLeft > 0)
-        {
-            this.$store.commit('setTimeLeft', this.timer.timeLeft);
-        }
     }
 }
 </script>

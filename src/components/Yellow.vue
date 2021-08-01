@@ -8,14 +8,10 @@
 import TrafficLight from './TrafficLight.vue'
 import Timer from './Timer'
 import { up, down, yellowColor } from '../constants'
+import { updateMixin } from './updateMixin'
 
 export default {
-    data: function(){
-        return {
-            timer: "",
-            activeColor: yellowColor
-        };
-    },
+    mixins: [updateMixin],
     props: ['direction'],
     components:
     {
@@ -23,6 +19,8 @@ export default {
     },
     beforeMount()
     {
+        console.log("Before mount " + this.$store.state.timeLeft);
+        this.activeColor = yellowColor;
         // create timer. On timer end change route
         this.timer = new Timer(this.$store.state.timeLeft, () => {
             if(this.$props.direction === up)
@@ -33,13 +31,6 @@ export default {
                 this.$router.push('/green');
             }
         });
-    },
-    updated()
-    {
-        if(this.timer.timeLeft > 0)
-        {
-            this.$store.commit('setTimeLeft', this.timer.timeLeft);
-        }
     }
 }
 </script>
