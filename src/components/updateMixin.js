@@ -6,7 +6,7 @@ export const updateMixin = {
             activeColor: ''
         };
     },
-    beforeDestroy()
+    updated()
     {
         this.$store.commit('setTimeLeft', this.timer.timeLeft);
     },

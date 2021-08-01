@@ -19,7 +19,6 @@ export default {
     },
     beforeMount()
     {
-        console.log("Before mount " + this.$store.state.timeLeft);
         this.activeColor = yellowColor;
         // create timer. On timer end change route
         this.timer = new Timer(this.$store.state.timeLeft, () => {
