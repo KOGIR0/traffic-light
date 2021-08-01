@@ -1,16 +1,16 @@
 <template>
     <div id="traffic-light">
-        <circle-light :circleColor="'red'"
-                    :isActive="active === 'red'"
-                    :isBlink="timeLeft <= 3"
+        <circle-light :circleColor="this.red"
+                    :isActive="this.isActive(this.red)"
+                    :isBlink="this.isBlink(this.red)"
                     :message="timeLeft"/>
-        <circle-light :circleColor="'yellow'"
-                    :isActive="active === 'yellow'"
-                    :isBlink="timeLeft <= 3"
+        <circle-light :circleColor="this.yellow"
+                    :isActive="this.isActive(this.yellow)"
+                    :isBlink="this.isBlink(this.yellow)"
                     :message="timeLeft"/>
-        <circle-light :circleColor="this.$store.state.green"
-                    :isActive="active === this.$store.state.green"
-                    :isBlink="timeLeft <= 3"
+        <circle-light :circleColor="this.green"
+                    :isActive="this.isActive(this.green)"
+                    :isBlink="this.isBlink(this.green)"
                     :message="timeLeft"/>
     </div>
 </template>
@@ -19,9 +19,27 @@
 import CircleLight from './CircleLight.vue'
 
 export default {
+    data: function()
+    {
+        return {
+            red: 'red',
+            yellow: 'yellow',
+            green: this.$store.state.green
+        }
+    },
     props: ['active', 'timeLeft'],
     components: {
         'circle-light': CircleLight
+    },
+    methods: {
+        isActive(activeValue)
+        {
+            return this.$props.active === activeValue;
+        },
+        isBlink(activeValue)
+        {
+            return this.$props.timeLeft <= 3 && this.isActive(activeValue);
+        }
     }
 }
 </script>

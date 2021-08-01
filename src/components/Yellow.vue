@@ -1,6 +1,6 @@
 <template>
     <div>
-        <traffic-light :active="'yellow'" :timeLeft="this.timer.timeLeft"/>
+        <traffic-light :active="activeColor" :timeLeft="this.timer.timeLeft"/>
     </div>
 </template>
 
@@ -12,7 +12,8 @@ import { up, down } from '../constants'
 export default {
     data: function(){
         return {
-            timer: ""
+            timer: "",
+            activeColor: 'yellow'
         };
     },
     props: ['direction'],

@@ -2,7 +2,7 @@
     <div class="border">
         <div class="light"
             :class="{ active: isActive, unactive: !isActive,
-                    blink: isBlink && isActive }"
+                    blink: isBlink }"
             :style="[isActive ?
                     { backgroundColor: circleColor, boxShadow: `0 0 55px 10px ${circleColor}` } :
                     { backgroundColor: circleColor }]"

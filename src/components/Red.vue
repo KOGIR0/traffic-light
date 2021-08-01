@@ -1,6 +1,6 @@
 <template>
     <div>
-        <traffic-light :active="'red'" :timeLeft="this.timer.timeLeft"></traffic-light>
+        <traffic-light :active="activeColor" :timeLeft="this.timer.timeLeft"></traffic-light>
     </div>
 </template>
 
@@ -11,7 +11,8 @@ import Timer from './Timer'
 export default {
     data: function(){
         return {
-            timer: ""
+            timer: "",
+            activeColor: 'red'
         }
     },
     components:
